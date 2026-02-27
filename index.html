@@ -3,431 +3,1634 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IYK.YK — Q1 Weekly Milestones</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>IYK.YK — The Fourth Estate, Decentralized</title>
+<meta name="description" content="A journalism institution owned by journalists and funded directly by the public. No advertisers. No algorithms. Community-governed, permanently on-chain.">
+<meta property="og:title" content="IYK.YK — The Fourth Estate, Decentralized">
+<meta property="og:description" content="A journalism institution owned by journalists and funded directly by the public. No advertisers. No algorithms. Founding meeting March 3, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iyk.yk">
+<meta property="og:image" content="https://iyk.yk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IYK.YK — The Fourth Estate, Decentralized">
+<meta name="twitter:description" content="A journalism institution owned by journalists and funded directly by the public. Founding meeting March 3, 2026.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D0D0F'/><text x='4' y='24' font-family='serif' font-size='18' font-weight='900' fill='%23C8A84B'>IY</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --ink: #0D0D0F;
-    --paper: #F4F1EA;
-    --gold: #C8A84B;
-    --gold-light: #E8D48E;
-    --muted: #6B6860;
-    --rule: #2A2820;
-    --accent-bg: #141410;
-    --card-bg: #0F0F0C;
-  }
-  body { background: var(--ink); color: var(--paper); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
-  .page { max-width: 980px; margin: 0 auto; padding: 60px 60px 80px; }
+/* ═══════════════════════════════════════
+   RESET & ROOT
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* HEADER */
-  .header { border-bottom: 1px solid var(--gold); padding-bottom: 28px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
-  .header-left .overline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .header-left .logo { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--paper); letter-spacing: -1px; }
-  .header-right { text-align: right; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); line-height: 1.8; }
+:root {
+  --ink:       #0D0D0F;
+  --ink-soft:  #161614;
+  --ink-mid:   #1E1E1A;
+  --paper:     #F4F1EA;
+  --paper-dim: #C8C5BC;
+  --paper-muted: #A09D94;
+  --gold:      #C8A84B;
+  --gold-light:#E8D48E;
+  --gold-dim:  #8A7232;
+  --muted:     #6B6860;
+  --rule:      #2A2820;
+  --rule-soft: #1E1E18;
+  --accent-bg: #141410;
+  --card-bg:   #0F0F0C;
+  --team-build:   #7B9E8A;
+  --team-comp:    #9E8A7B;
+  --team-social:  #8A7B9E;
+  --team-media:   #9E9A7B;
+  --nav-h: 48px;
+}
 
-  /* GOAL */
-  .goal-block { background: var(--accent-bg); border-left: 4px solid var(--gold); padding: 24px 28px; margin-bottom: 48px; }
-  .goal-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .goal-headline { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--paper); line-height: 1.25; }
+html { font-size: 16px; scroll-behavior: smooth; }
 
-  /* SECTION LABEL */
-  .section-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-  /* LEGEND */
-  .legend { display: flex; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
-  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
 
-  /* WEEK ROW */
-  .week { display: grid; grid-template-columns: 110px 1fr; gap: 0; margin-bottom: 2px; position: relative; }
-  .week::before { content: ''; position: absolute; left: 110px; top: 0; bottom: 0; width: 1px; background: var(--rule); z-index: 0; }
+/* ═══════════════════════════════════════
+   STICKY NAV
+═══════════════════════════════════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(13,13,15,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.site-nav.scrolled {
+  border-bottom-color: var(--rule);
+  background: rgba(13,13,15,0.96);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--paper);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 14px 14px;
+  transition: color 0.2s ease;
+  display: block;
+}
+.nav-links a:hover { color: var(--paper); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink) !important;
+  background: var(--gold);
+  padding: 8px 16px !important;
+  transition: opacity 0.2s ease !important;
+}
+.nav-cta:hover { opacity: 0.85; color: var(--ink) !important; }
 
-  /* Milestone weeks have special treatment */
-  .week.milestone .week-date::after { width: 13px; height: 13px; background: var(--gold); right: -7px; border: 2px solid var(--ink); box-shadow: 0 0 0 1px var(--gold); }
+/* ═══════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════ */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 0px) 60px 80px;
+}
 
-  .week-date {
-    padding: 18px 16px 18px 0;
-    text-align: right;
-    position: relative;
-    z-index: 1;
-  }
-  .week-date::after {
-    content: '';
-    position: absolute;
-    right: -5px;
-    top: 24px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #2A2820;
-    border: 2px solid var(--muted);
-    z-index: 2;
-  }
-  .week-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
-  .week-date-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); margin-top: 2px; font-weight: 500; }
+/* ═══════════════════════════════════════
+   HOOK (redesigned — gold earned here only)
+═══════════════════════════════════════ */
+.hook-block {
+  position: relative;
+  overflow: hidden;
+  margin-left: -60px;
+  margin-right: -60px;
+  margin-top: calc(-1 * var(--nav-h));
+  padding: 72px 80px 56px;
+  background: var(--gold);
+}
+.hook-block::before {
+  content: 'IYK.YK';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 240px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.06);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -6px;
+}
+.hook-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.55;
+  margin-bottom: 16px;
+}
+.hook-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.08;
+  margin-bottom: 20px;
+  max-width: 680px;
+  letter-spacing: -0.5px;
+}
+.hook-body {
+  font-size: 14px;
+  color: var(--ink);
+  opacity: 0.82;
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 640px;
+}
 
-  .week-content { padding: 14px 0 14px 28px; border-bottom: 1px solid #161612; z-index: 1; }
-  .week:last-of-type .week-content { border-bottom: none; }
+/* ═══════════════════════════════════════
+   RSVP BAR
+═══════════════════════════════════════ */
+.rsvp-block {
+  background: var(--ink-soft);
+  border: 1px solid var(--gold);
+  border-top: none;
+  padding: 24px 48px;
+  margin-left: -60px;
+  margin-right: -60px;
+  margin-bottom: 56px;
+}
+.rsvp-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.rsvp-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--paper);
+}
+.rsvp-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.rsvp-sub {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 6px;
+  max-width: 480px;
+}
+.rsvp-actions { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  padding: 14px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-primary-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 9px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--muted); }
+.btn-secondary-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.btn-secondary-label span { color: var(--gold); }
 
-  /* TEAM TASKS IN WEEK */
-  .week-teams { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #1A1A14; border: 1px solid #1A1A14; }
-  .week-team { background: var(--card-bg); padding: 12px 14px; }
-  .wt-name { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 7px; }
-  .wt-name.build { color: #7B9E8A; }
-  .wt-name.competition { color: #9E8A7B; }
-  .wt-name.social { color: #8A7B9E; }
-  .wt-name.media { color: #9E9A7B; }
+/* ═══════════════════════════════════════
+   MASTHEAD
+═══════════════════════════════════════ */
+.masthead {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+}
+.overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 0.88;
+  color: var(--paper);
+  letter-spacing: -3px;
+}
+.tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 16px;
+  letter-spacing: 0.04em;
+}
+.masthead-right { text-align: right; }
+.stamp {
+  border: 1px solid var(--rule);
+  padding: 14px 22px;
+  display: inline-block;
+  background: var(--accent-bg);
+}
+.stamp-top {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.stamp-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.2;
+}
+.stamp-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 4px;
+}
 
-  .wt-tasks { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-  .wt-tasks li { font-size: 11px; color: #8A8780; line-height: 1.45; padding-left: 10px; position: relative; font-weight: 300; }
-  .wt-tasks li::before { content: '–'; position: absolute; left: 0; color: #444; }
+/* ═══════════════════════════════════════
+   SECTION LABELS — three tiers now
+═══════════════════════════════════════ */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.section-label-muted {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
 
-  /* MILESTONE BAR */
-  .milestone-row { display: grid; grid-template-columns: 110px 1fr; gap: 0; margin-bottom: 16px; position: relative; }
-  .milestone-row::before { content: ''; position: absolute; left: 110px; top: 50%; width: 1px; height: 50%; background: var(--rule); }
-  .milestone-dot-spacer { position: relative; }
-  .milestone-dot-spacer::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 3px solid var(--ink);
-    box-shadow: 0 0 0 1px var(--gold);
-    z-index: 3;
-  }
-  .milestone-bar {
-    background: var(--gold);
-    color: var(--ink);
-    padding: 11px 18px;
-    margin-left: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .m-date { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; white-space: nowrap; margin-right: 16px; }
-  .m-text { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; }
+/* ═══════════════════════════════════════
+   SECTION DIVIDERS — visual breathing room
+═══════════════════════════════════════ */
+.section-break {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 56px 0 40px;
+}
+.section-break::before,
+.section-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule-soft);
+}
+.section-break-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #2A2820;
+  white-space: nowrap;
+}
 
-  /* PHASE DIVIDER */
-  .phase-divider { display: grid; grid-template-columns: 110px 1fr; gap: 0; margin: 8px 0 4px; }
-  .phase-divider-spacer {}
-  .phase-label { margin-left: 28px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #2A2820; padding: 6px 0; border-top: 1px solid #1A1A14; }
+/* ═══════════════════════════════════════
+   LEDE
+═══════════════════════════════════════ */
+.lede-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.lede-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--paper);
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  letter-spacing: -0.3px;
+}
+.lede-text {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--paper-dim);
+  font-weight: 300;
+}
+.lede-pull {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--gold-light);
+  font-style: italic;
+  border-left: 2px solid var(--gold);
+  padding-left: 22px;
+  align-self: center;
+}
 
-  /* FOOTER */
-  .footer { border-top: 1px solid #2A2820; padding-top: 24px; display: flex; justify-content: space-between; align-items: flex-end; margin-top: 48px; }
-  .footer-main { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--paper); }
-  .footer-sub { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.1em; margin-top: 3px; }
-  .footer-right { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); text-align: right; line-height: 1.7; }
-  .gold { color: var(--gold); }
+/* ═══════════════════════════════════════
+   WHY NOW / LANDSCAPE
+═══════════════════════════════════════ */
+.why-landscape-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 56px;
+}
+.why-cell {
+  background: var(--accent-bg);
+  padding: 28px 26px;
+}
+.landscape-proof-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* ═══════════════════════════════════════
+   PILLARS
+═══════════════════════════════════════ */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  margin-bottom: 56px;
+  border: 1px solid var(--rule);
+}
+.pillar {
+  background: var(--accent-bg);
+  padding: 26px 22px;
+  transition: background 0.2s ease;
+}
+.pillar:hover { background: #1A1A16; }
+.pillar-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.pillar-text {
+  font-size: 12.5px;
+  line-height: 1.72;
+  color: var(--paper-muted);
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════
+   TREASURY / FLYWHEEL
+═══════════════════════════════════════ */
+.treasury-block {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin-bottom: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.treasury-text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--paper-dim);
+  font-weight: 300;
+}
+.flywheel { display: flex; flex-direction: column; gap: 0; }
+.flywheel-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--paper);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  position: relative;
+}
+.flywheel-step:last-child { border-bottom: none; }
+.flywheel-arrow {
+  color: var(--gold);
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.flywheel-step:first-child .flywheel-arrow { color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   CONTEXT ROW
+═══════════════════════════════════════ */
+.context-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 48px;
+}
+.context-cell {
+  background: var(--accent-bg);
+  padding: 18px 22px;
+}
+.context-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.context-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.3;
+}
+
+/* ═══════════════════════════════════════
+   GOVERNANCE NOTE
+═══════════════════════════════════════ */
+.governance-note {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--muted);
+  padding: 18px 24px;
+  margin-bottom: 48px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* ═══════════════════════════════════════
+   GOAL BLOCK
+═══════════════════════════════════════ */
+.goal-block {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 32px 36px;
+  margin-bottom: 36px;
+}
+.goal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.goal-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.goal-body { font-size: 13px; color: var(--paper-muted); font-weight: 300; line-height: 1.72; }
+
+/* ═══════════════════════════════════════
+   LIVING DOC BANNER
+═══════════════════════════════════════ */
+.living-doc {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--rule-soft);
+  padding: 12px 20px;
+  margin-bottom: 0;
+}
+.living-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.85)} }
+.living-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.living-text span { color: var(--gold-light); }
+
+/* ═══════════════════════════════════════
+   TEAM LEGEND
+═══════════════════════════════════════ */
+.team-legend { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
+   CONVERSATION TAGS
+═══════════════════════════════════════ */
+.conv-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 6px; font-weight: 500; }
+.conv-related     { background: rgba(192,68,68,0.12); color: #E07070; border: 1px solid rgba(192,68,68,0.25); }
+.conv-possibility { background: rgba(200,168,75,0.12); color: #C8A84B; border: 1px solid rgba(200,168,75,0.25); }
+.conv-opportunity { background: rgba(74,158,104,0.12); color: #6DBF8A; border: 1px solid rgba(74,158,104,0.25); }
+.conv-action      { background: rgba(74,128,200,0.12); color: #7AAEE8; border: 1px solid rgba(74,128,200,0.25); }
+.conv-completion  { background: rgba(123,94,167,0.12); color: #A98FD0; border: 1px solid rgba(123,94,167,0.25); }
+.conv-breakdown   { background: rgba(200,80,144,0.12); color: #E088B8; border: 1px solid rgba(200,80,144,0.25); }
+
+/* ═══════════════════════════════════════
+   CONVERSATION SUBSECTIONS
+═══════════════════════════════════════ */
+.conv-section { margin-bottom: 9px; }
+.conv-section:last-child { margin-bottom: 0; }
+.conv-section .conv-tag { display: block; margin-bottom: 5px; }
+
+/* ═══════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════ */
+.timeline { position: relative; margin-bottom: 64px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 110px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--rule) 40px, var(--rule) calc(100% - 40px), transparent);
+}
+.week {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  margin-bottom: 2px;
+  position: relative;
+}
+.week-date {
+  padding: 16px 16px 16px 0;
+  text-align: right;
+  position: relative;
+  z-index: 1;
+}
+.week-date::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 22px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rule);
+  border: 2px solid var(--muted);
+  z-index: 2;
+  transition: border-color 0.2s, background 0.2s;
+}
+.week:hover .week-date::after { border-color: var(--gold-dim); background: var(--accent-bg); }
+.week-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+.week-date-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); margin-top: 2px; font-weight: 500; }
+.week-content {
+  padding: 12px 0 12px 28px;
+  border-bottom: 1px solid var(--rule-soft);
+  z-index: 1;
+  transition: background 0.15s ease;
+}
+.week:hover .week-content { background: rgba(255,255,255,0.012); }
+.week-teams {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.week-team {
+  background: var(--card-bg);
+  padding: 11px 13px;
+}
+.wt-name { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+.wt-name.build      { color: var(--team-build); }
+.wt-name.competition{ color: var(--team-comp); }
+.wt-name.social     { color: var(--team-social); }
+.wt-name.media      { color: var(--team-media); }
+.wt-tasks { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.wt-tasks li { font-size: 10.5px; color: #8A8780; line-height: 1.45; padding-left: 10px; position: relative; font-weight: 300; }
+.wt-tasks li::before { content: '–'; position: absolute; left: 0; color: #3A3A34; }
+
+/* ═══════════════════════════════════════
+   MILESTONE ROW
+═══════════════════════════════════════ */
+.milestone-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  margin-bottom: 20px;
+  position: relative;
+}
+.milestone-row::before {
+  content: '';
+  position: absolute;
+  left: 110px;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  background: var(--rule);
+}
+.milestone-dot {
+  position: relative;
+}
+.milestone-dot::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--ink);
+  box-shadow: 0 0 0 1px var(--gold), 0 0 12px rgba(200,168,75,0.3);
+  z-index: 3;
+}
+.milestone-bar {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 12px 20px;
+  margin-left: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.m-date { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+.m-text { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; }
+
+/* ═══════════════════════════════════════
+   PHASE DIVIDER
+═══════════════════════════════════════ */
+.phase-divider { display: grid; grid-template-columns: 110px 1fr; margin: 12px 0 6px; }
+.phase-label {
+  margin-left: 28px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #2A2820;
+  padding: 8px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+/* ═══════════════════════════════════════
+   OUTCOMES GRID
+═══════════════════════════════════════ */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 56px;
+}
+.outcome-cell { background: var(--ink-soft); padding: 24px 26px; }
+.outcome-cell.highlighted { background: var(--accent-bg); border-left: 3px solid var(--gold); }
+.outcome-tag { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.outcome-headline { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--paper); margin-bottom: 10px; line-height: 1.25; letter-spacing: -0.2px; }
+.outcome-body { font-size: 12px; color: var(--paper-muted); font-weight: 300; line-height: 1.68; }
+
+/* ═══════════════════════════════════════
+   PEOPLE GRID
+═══════════════════════════════════════ */
+.people-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 56px;
+}
+.people-col { background: var(--accent-bg); padding: 26px 24px; }
+.people-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.people-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.people-list li { font-size: 12.5px; color: #B0ADA4; line-height: 1.58; padding-left: 16px; position: relative; font-weight: 300; }
+.people-list li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 9px; top: 3px; }
+
+/* ═══════════════════════════════════════
+   FOUNDING TEAM
+═══════════════════════════════════════ */
+.founding-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+.founder-card {
+  background: var(--accent-bg);
+  padding: 22px 22px;
+  transition: background 0.2s;
+}
+.founder-card:hover { background: #1A1A16; }
+
+/* ═══════════════════════════════════════
+   FIRST ASSEMBLY
+═══════════════════════════════════════ */
+.assembly-block {
+  border: 1px solid var(--rule);
+  background: var(--accent-bg);
+  padding: 28px 32px;
+  margin-bottom: 56px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+}
+.assembly-date-col { text-align: center; padding-right: 36px; border-right: 1px solid var(--rule); }
+.assembly-day { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--paper); line-height: 1; }
+.assembly-month { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--paper); }
+.assembly-dow { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 4px; letter-spacing: 0.1em; }
+.assembly-times { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 12px; }
+.assembly-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--paper); }
+.assembly-time span { color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   QUARTERLY ROADMAP
+═══════════════════════════════════════ */
+.quarter-block {
+  border: 1px dashed var(--rule);
+  border-top: none;
+  padding: 28px 32px;
+  background: var(--ink-soft);
+}
+.quarter-block:first-child { border-top: 1px dashed var(--rule); }
+.quarter-tag {
+  background: var(--ink-mid);
+  border: 1px dashed var(--rule);
+  padding: 8px 16px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   GLOSSARY
+═══════════════════════════════════════ */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.gloss-cell {
+  background: var(--ink-soft);
+  padding: 18px 22px;
+  border-top: 1px solid var(--rule-soft);
+  transition: background 0.15s;
+}
+.gloss-cell:hover { background: #131310; }
+.gloss-cell:nth-child(-n+2) { border-top: none; }
+.gloss-term { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 7px; text-transform: uppercase; }
+.gloss-def { font-size: 11.5px; color: var(--paper-muted); line-height: 1.68; font-weight: 300; }
+
+/* ═══════════════════════════════════════
+   FRAMEWORK / LIVING DOC PANELS
+═══════════════════════════════════════ */
+.living-protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-top: none;
+  margin-bottom: 28px;
+}
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-bottom: 12px;
+}
+.framework-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-top: none;
+  margin-bottom: 28px;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  margin-top: 48px;
+}
+.footer-main { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--paper); margin-bottom: 5px; }
+.footer-sub { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.1em; }
+.footer-right { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); text-align: right; line-height: 1.8; }
+.gold { color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ═══════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════ */
+@media (max-width: 720px) {
+  .site-nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .page { padding: calc(var(--nav-h) + 0px) 20px 48px; }
+  .hook-block { margin-left: -20px; margin-right: -20px; padding: 48px 28px 40px; }
+  .hook-headline { font-size: 24px; }
+  .hook-block::before { font-size: 120px; }
+  .rsvp-block { margin-left: -20px; margin-right: -20px; padding: 20px 24px; }
+  .rsvp-bar { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .masthead { grid-template-columns: 1fr; gap: 20px; }
+  .masthead-right { text-align: left; }
+  .logo { font-size: 60px; }
+  .lede-block { grid-template-columns: 1fr; gap: 24px; }
+  .why-landscape-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .treasury-block { grid-template-columns: 1fr; }
+  .context-row { grid-template-columns: 1fr; }
+  .founding-team-grid { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .people-grid { grid-template-columns: 1fr; }
+  .glossary-grid { grid-template-columns: 1fr; }
+  .gloss-cell:nth-child(2) { border-top: 1px solid var(--rule-soft); }
+  .footer { grid-template-columns: 1fr; }
+  .footer-right { text-align: left; }
+  .assembly-block { grid-template-columns: 1fr; }
+  .assembly-date-col { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 20px; }
+  .living-protocol-grid { grid-template-columns: 1fr; }
+  .framework-grid { grid-template-columns: 1fr 1fr; }
+  .framework-notes-grid { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
+  .week { grid-template-columns: 1fr; }
+  .week-date { text-align: left; padding: 12px 0 4px; }
+  .week-date::after { display: none; }
+  .week-content { padding: 0 0 16px; }
+  .week-teams { grid-template-columns: 1fr 1fr; }
+  .milestone-row { grid-template-columns: 1fr; }
+  .milestone-row::before { display: none; }
+  .milestone-bar { margin-left: 0; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .phase-divider { grid-template-columns: 1fr; }
+  .phase-label { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .week-teams { grid-template-columns: 1fr; }
+  .framework-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
+<nav class="site-nav" id="site-nav">
+  <a href="#top" class="nav-logo">IYK<span>.</span>YK</a>
+  <ul class="nav-links">
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#plan">The Plan</a></li>
+    <li><a href="#join-section">Join</a></li>
+    <li><a href="#glossary">Glossary</a></li>
+    <li><a href="https://luma.com/dmw1m7lu" target="_blank" class="nav-cta">RSVP</a></li>
+  </ul>
+</nav>
 <div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-left">
-      <div class="overline">Q1 Weekly Milestone Plan · 2026</div>
-      <div class="logo">IYK.YK</div>
+  <!-- ══ 30-SECOND HOOK — FIRST THING SEEN ══ -->
+  <div id="top" class="hook-block">
+    <div class="hook-overline">What Is This?</div>
+    <div class="hook-headline">A journalism institution owned by journalists<br>and funded directly by the public.</div>
+    <div class="hook-body">No advertisers. No editors at the top of a corporate chain. No algorithms deciding what gets covered. Just a community that funds the journalism it actually needs — and journalists who own the institution they work for. The whole thing runs on-chain, permanently, with no single owner who can shut it down.</div>
+  </div>
+
+  <!-- ══ RSVP — IMMEDIATE CTA ══ -->
+  <div class="rsvp-block">
+    <div class="rsvp-bar" style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div>
+      <div class="rsvp-date">Tuesday, March 3, 2026</div>
+      <div class="rsvp-meta">9:00 AM MT &nbsp;·&nbsp; 11:00 AM ET &nbsp;·&nbsp; 8:00 AM PT &nbsp;·&nbsp; First Assembly</div>
+      <div class="rsvp-sub">No one is being sold anything. No one is being hired. This is an invitation to show up, hear the vision, and choose whether you want to help found it.</div>
     </div>
-    <div class="header-right">
-      March 3 — May 31, 2026<br>
-      Four Teams · 13 Weeks<br>
-      <span class="gold">One Deadline</span>
+    <div class="rsvp-actions">
+      <a href="https://luma.com/dmw1m7lu" target="_blank" class="btn-primary"><div class="btn-primary-label">RSVP — Join Us.</div></a>
+      <a href="https://discord.gg/UTBy6kVp9" target="_blank" class="btn-secondary"><div class="btn-secondary-label">Can't make it? &nbsp;<span>Join the Discord →</span></div></a>
+    </div>
+  </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div>
+      <div class="overline">Decentralized Journalism Protocol · Est. 2026</div>
+      <div class="logo">IYK.YK</div>
+      <div class="tagline">If You Know, You Know. &nbsp;·&nbsp; The Fourth Estate, Decentralized.</div>
+    </div>
+    <div class="masthead-right">
+      <div class="stamp">
+        <div class="stamp-top">Founding Meeting</div>
+        <div class="stamp-price">March 3<br>2026</div>
+        <div class="stamp-sub">9AM MT · 11AM ET · 8AM PT</div>
+      </div>
     </div>
   </div>
 
-  <!-- NAME OF THE GAME -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#2A2820;border:1px solid #2A2820;margin-bottom:40px;">
-    <div style="background:var(--accent-bg);padding:18px 22px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Name of the Game</div>
-      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--paper);line-height:1.3;">IYK.YK: The Fourth Estate, Decentralized</div>
+  <!-- LEDE -->
+  <span id="vision"></span>
+  <div class="lede-block reveal">
+    <div class="section-label" style="grid-column:1/-1">The Long Vision</div>
+    <h2 class="lede-headline">Journalism is not broken because people stopped caring.<br>It is broken because journalists were never in charge.</h2>
+    <div class="lede-text">
+      Newsrooms are closing. Journalists are underpaid, laid off, or pressured into chasing clicks to survive. The stories that matter most — the investigations, the accountability reporting, the inconvenient truths — are the ones least likely to get funded. Not because audiences don't want them, but because the people paying for media have always been advertisers, not readers.<br><br>
+      IYK.YK is a new model. A community-governed institution where journalists get paid directly for the work the public actually needs. Where reporters and contributors have a real stake in the platform they're building. Where the archive of what gets published belongs to no single owner and can never be taken down.
     </div>
-    <div style="background:var(--accent-bg);padding:18px 22px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Fundamental Possibility</div>
-      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--paper);line-height:1.3;font-style:italic;">A new kind of thing is possible.</div>
+    <div class="lede-pull">
+      "What if the journalists owned the institution — and the community funded it directly?"
     </div>
-    <div style="background:var(--accent-bg);padding:18px 22px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Domain</div>
-      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--paper);line-height:1.3;">Journalism</div>
+  </div>
+
+  <!-- WHY NOW + LANDSCAPE -->
+  <div class="why-landscape-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2A2820;border:1px solid #2A2820;margin-bottom:48px;">
+
+    <!-- WHY NOW -->
+    <div style="background:#0A0A08;padding:28px 26px;">
+      <div class="section-label" style="margin-bottom:12px;">Why 2026</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--paper);line-height:1.3;margin-bottom:16px;">The infrastructure finally exists.<br>The old system is finally failing.</div>
+      <div style="font-size:12.5px;color:#C8C5BC;font-weight:300;line-height:1.75;">
+        This could not have been built in 2021. The tools were speculative. The networks were thin. The legal structures for community-governed organizations did not exist in any workable form.<br><br>
+        Three things converged in 2025 that make 2026 the right moment. First, the collapse of legacy media is no longer gradual — it is structural. BuzzFeed News is gone. Vice is bankrupt. Local newsrooms are closing at a rate of two per week across the United States. The people who believed the old model would stabilize have run out of time to wait.<br><br>
+        Second, Farcaster has reached a critical mass of journalists, builders, and media professionals who are not crypto-native speculators — they are people who left broken institutions and are looking for something worth building. The audience for what IYK.YK is offering exists, and it is reachable.<br><br>
+        Third, the infrastructure stack — blank.space for governance, Octant for yield-based funding, on-chain reputation via soulbound tokens — is now deployable without custom engineering. The barrier is no longer technical. It is organizational. That is a gap people can fill.
+      </div>
+    </div>
+
+    <!-- THE LANDSCAPE -->
+    <div style="background:#0A0A08;padding:28px 26px;border-left:1px solid #2A2820;">
+      <div class="section-label" style="margin-bottom:12px;">What Has Been Tried</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--paper);line-height:1.3;margin-bottom:16px;">Others have tried. Their failures<br>are the blueprint for this design.</div>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:4px;">
+
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#4A9E68;margin-bottom:4px;">Proof it can work</div>
+          <div style="font-size:12px;color:#C8C5BC;font-weight:300;line-height:1.65;"><span style="color:var(--paper);font-weight:500;">Defector Media (2020)</span> — Eighteen journalists left a dying publication, launched a worker-owned company, and built a sustainable audience of 35,000+ paying subscribers. It proved that journalist ownership is viable and that audiences will follow reporters they trust. IYK.YK takes that model further: the community owns it, not just the journalists.</div>
+        </div>
+
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#7B5EA7;margin-bottom:4px;">Proved community treasury can fund media</div>
+          <div style="font-size:12px;color:#C8C5BC;font-weight:300;line-height:1.65;"><span style="color:var(--paper);font-weight:500;">Bankless DAO (2021)</span> — Demonstrated that a community treasury could fund ongoing media production at scale. Its limitation: no editorial standards, no quality filter, and governance capture by insiders over time. IYK.YK uses competitions and soulbound reputation to solve exactly that problem.</div>
+        </div>
+
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#C85050;margin-bottom:4px;">Why the last attempt failed</div>
+          <div style="font-size:12px;color:#C8C5BC;font-weight:300;line-height:1.65;"><span style="color:var(--paper);font-weight:500;">Civil (2017–2020)</span> — Raised $5 million to build a blockchain-based journalism platform. Shut down operations by 2020. The failure was not the vision — it was the model. Token economics were speculative. There was no mechanism for sustainable, yield-based funding. Editorial quality was inconsistent because anyone could publish. IYK.YK is designed around every one of those failure points: endowment yield over token speculation, competition-based quality filtering, and a permanent archive that is not dependent on platform survival.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+    <span id="join-section"></span>
+  <!-- WHO WE'RE LOOKING FOR — moved up so newcomers know immediately if this is for them -->
+  <div class="section-label">Who We Are Looking For</div>
+  <div style="margin-bottom:20px;">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.3;margin-bottom:6px;">This is not a job. It is a founding.</div>
+    <div style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.6;">The people who join now are not employees. They are founding contributors — with a real stake in what gets built and permanent recognition for the role they played.</div>
+  </div>
+  <div class="people-grid reveal" style="margin-bottom:48px;">
+    <div class="people-col">
+      <div class="people-title">You belong here if you are…</div>
+      <ul class="people-list">
+        <li>A journalist who is tired of writing for algorithms and wants to write for people</li>
+        <li>Someone who believes accountability journalism is worth fighting for</li>
+        <li>A filmmaker, researcher, editor, or producer who wants their work to matter beyond the next news cycle</li>
+        <li>Frustrated by who controls the media and willing to help build an alternative</li>
+        <li>Someone who does what they say they will — reputation is everything here</li>
+      </ul>
+    </div>
+    <div class="people-col">
+      <div class="people-title">We are specifically seeking…</div>
+      <ul class="people-list">
+        <li>Journalists and writers ready to compete for and lead the first published bounty</li>
+        <li>Editors and producers with documentary, investigative, or long-form experience</li>
+        <li>Community builders and social media strategists who know how to grow an audience</li>
+        <li>Developers who want to build infrastructure for public interest media</li>
+        <li>Finance and strategy minds who understand sustainable institution-building</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="how"></span>
+  <!-- PILLARS -->
+  <div class="section-label">How IYK.YK Works</div>
+  <div class="pillars reveal">
+    <div class="pillar">
+      <div class="pillar-title">Ownership</div>
+      <div class="pillar-text">Members govern the institution. Those who contribute most earn more say in how funds are directed. Your track record as a contributor — whether you deliver, collaborate, and show up — is recorded permanently and belongs to you. Governance decentralizes by design.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Getting Paid</div>
+      <div class="pillar-text">New contributors earn membership by winning open competitions. Existing members earn rewards for every piece they publish. The institution is funded through community investment — and runs on yield only, so the founding capital is never depleted. The treasury belongs to the community, permanently.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">The Archive</div>
+      <div class="pillar-text">Every story, question, and submission is archived permanently — organized, searchable, and owned by no single platform. AI helps synthesize what the community is asking and what the journalism is answering. The record of this institution cannot be deleted, bought, or buried.</div>
+    </div>
+  </div>
+
+  <!-- TREASURY -->
+  <div class="treasury-block reveal">
+    <div>
+      <div class="section-label">Sustainability Model</div>
+      <p class="treasury-text">IYK.YK runs on an endowment model. Auction proceeds and patron stakes flow into an Octant vault. <span class="gold">Only yield is deployed — the principal is preserved permanently.</span> External patrons stake directly into the IYK.YK vault, growing the yield base independently of auction cadence. The more compelling the journalism, the more people stake.</p>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:14px">How It Sustains Itself</div>
+      <div class="flywheel">
+        <div class="flywheel-step">Community investment seeds the fund</div>
+        <div class="flywheel-step">Supporters stake, the fund grows</div>
+        <div class="flywheel-step">Returns fund journalist competitions</div>
+        <div class="flywheel-step">Great journalism attracts more supporters</div>
+        <div class="flywheel-step">The institution sustains itself — permanently</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOVERNANCE NOTE -->
+  <div style="background:#0A0A08;border:1px solid #2A2820;border-left:3px solid #3A3A30;padding:20px 28px;margin-bottom:40px;display:flex;gap:20px;align-items:flex-start;">
+    <div style="flex-shrink:0;margin-top:2px;">
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Open Question</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--paper);margin-bottom:6px;">Legal structure and contributor compensation are decisions the founding team makes together on March 3.</div>
+      <div style="font-size:12px;color:#8A8780;font-weight:300;line-height:1.65;">What legal entity houses this institution — a Wyoming DAO LLC, a nonprofit, a cooperative — and how founding contributors are compensated for their work are governance questions. They will not be decided by one person in advance. They will be declared, debated, and agreed to by the people in the room. This document will be updated to reflect what the founding team decides.</div>
+    </div>
+  </div>
+
+    <!-- CONTEXT ROW -->
+  <div class="context-row" style="margin-bottom:40px;">
+    <div class="context-cell">
+      <div class="context-label">Name of the Game</div>
+      <div class="context-value">IYK.YK: The Fourth Estate, Decentralized</div>
+    </div>
+    <div class="context-cell">
+      <div class="context-label">Fundamental Possibility</div>
+      <div class="context-value" style="font-style:italic;">A new kind of thing is possible.</div>
+    </div>
+    <div class="context-cell">
+      <div class="context-label">Domain</div>
+      <div class="context-value">Journalism</div>
     </div>
   </div>
 
   <!-- GOAL -->
-  <div class="goal-block">
+  <div class="section-label">The Goal — By May 31, 2026</div>
+  <div class="goal-block reveal" style="margin-bottom:40px;">
     <div class="goal-label">Primary Outcome · May 31, 2026</div>
-    <div class="goal-headline">The first IYK.YK writing competition is live, bounties are funded, and journalists are submitting.</div>
+    <div class="goal-headline">The first IYK.YK writing competition is live and accepting submissions.</div>
+    <div class="goal-body">blank.space is deployed. The Farcaster channel has an audience. The bounty is funded. Journalists are submitting. Submissions are flowing into Nouns Builder. Every team has done its part to make this single moment happen.</div>
   </div>
 
-  <!-- LEGEND -->
-  <div class="section-label">Teams</div>
-  <div class="legend" style="margin-bottom:40px;">
+  <!-- LIVING DOCUMENT BANNER + PROTOCOL -->
+  <div class="living-doc"><div class="living-dot"></div><div class="living-text"><span>Living Document</span> — Last edited February 26, 2026. This document reflects exactly where we are right now.</div>
+  </div>
+  <div class="living-protocol-grid">
+    <div style="background:#0A0A08;padding:14px 18px;">
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Weekly Cadence</div>
+      <div style="font-size:11px;color:#8A8780;font-weight:300;line-height:1.6;">Each Friday, every team confirms their results for that week. Those results directly inform what is written for the following week. What happened gets recorded here. What comes next gets updated accordingly.</div>
+    </div>
+    <div style="background:#0A0A08;padding:14px 18px;">
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Living Promises</div>
+      <div style="font-size:11px;color:#8A8780;font-weight:300;line-height:1.6;">If teams get ahead, things happen sooner than written. If a team encounters problems, certain promises may shift. This is not failure — it is the document doing its job. Every change is visible. Nothing is managed around.</div>
+    </div>
+    <div style="background:#0A0A08;padding:14px 18px;">
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">By March 13</div>
+      <div style="font-size:11px;color:#8A8780;font-weight:300;line-height:1.6;">Each team will have proposed their own revisions to this document — based on what they saw in Week 1 and what they know their team can actually deliver. The document reflects the team's commitments, not a plan handed down to them.</div>
+    </div>
+  </div>
+
+  <!-- CONVERSATION FRAMEWORK KEY -->
+  <div class="framework-grid">
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-related">Being Related</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">The unseen foundation of all accomplishment. Must exist before the game begins. The larger this foundation, the larger what can be built. Possibility naturally falls out of it.</div></div>
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-possibility">Possibility</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">Not prediction — declaration. Rich enough to draw the present toward it. Alive in listening and speaking. Distinct from a pipe dream, which invents a future people cannot hear.</div></div>
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-opportunity">Opportunity</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">Translates possibility into something feasible and do-able. Creates the Who, What, Where, When from nothing. Without it, commitment weakens. There are no opportunities in life — they are a conversation.</div></div>
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-action">Action</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">Requests, promises, declarations — not to-dos. "I request X by Y." "I promise X by Y." There is no try. A decline is also a promise. Conditions of satisfaction and a deadline are required.</div></div>
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-completion">Completion</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">Not merely finished — whole, with integrity, nothing missing. Ask "What is incomplete?" until the answer is nothing. Standing in completion is what lets you see what still needs completing.</div></div>
+    <div style="background:var(--card-bg);padding:10px 14px;"><div class="conv-tag conv-breakdown">Breakdown</div><div style="font-size:10px;color:#8A8780;margin-top:4px;font-weight:300;line-height:1.5;">A disruption to a commitment — declared, not reacted to. "I declare a breakdown in X." Not a problem. A breakdown is yours to declare and yours to resolve. Bigger commitments produce bigger breakdowns.</div></div>
+  </div>
+  <!-- FRAMEWORK NOTES -->
+  <div class="framework-notes-grid">
+    <div style="background:#0A0A08;padding:12px 16px;display:flex;gap:10px;align-items:flex-start;">
+      <div style="flex-shrink:0;margin-top:2px;"><div class="conv-tag conv-breakdown" style="margin-bottom:0;">Breakdown Protocol</div></div>
+      <div style="font-size:10.5px;color:#8A8780;font-weight:300;line-height:1.6;">When things do not go as planned, stop immediately. Declare the breakdown — "I declare a breakdown in X." Get into a conversation for possibility and opportunity. Make requests and promises to resolve it. Do not manage around it. Update this document to reflect what happened and what the next steps are.</div>
+    </div>
+    <div style="background:#0A0A08;padding:12px 16px;display:flex;gap:10px;align-items:flex-start;">
+      <div style="flex-shrink:0;margin-top:2px;"><div class="conv-tag conv-possibility" style="margin-bottom:0;">Multiple Conversations</div></div>
+      <div style="font-size:10.5px;color:#8A8780;font-weight:300;line-height:1.6;">Any team can be inside multiple conversations simultaneously. Tags shown each week reflect all conversations present — not a single dominant one. Being Related is always in the background. A breakdown can arise inside any other conversation.</div>
+    </div>
+  </div>
+
+  <span id="plan"></span>
+  <!-- ══════════════════ TIMELINE — READS FROM END TO BEGINNING ══════════════════ -->
+
+  <!-- FOUNDING TEAM -->
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+    <div class="section-label" style="margin-bottom:0;">Founding Team</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Updated after March 3 · Credentials added by each member</div>
+  </div>
+  <div class="founding-team-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#2A2820;border:1px solid #2A2820;margin-bottom:32px;">
+    <div style="background:var(--accent-bg);padding:20px 22px;">
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--paper);margin-bottom:4px;">SwarthyHatter</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#7B9E8A;margin-bottom:12px;">Build · Tokenomics · BD</div>
+      <div style="font-size:11.5px;color:#8A8780;font-weight:300;line-height:1.6;margin-bottom:10px;">Protocol architecture, blank.space deployment, token framework, and founding partnerships.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#3A3A30;border-top:1px solid #2A2820;padding-top:10px;">Background · To be added</div>
+    </div>
+    <div style="background:var(--accent-bg);padding:20px 22px;">
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--paper);margin-bottom:4px;">Maceo</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8A7B9E;margin-bottom:12px;">Social · Branding · Community</div>
+      <div style="font-size:11.5px;color:#8A8780;font-weight:300;line-height:1.6;margin-bottom:10px;">Farcaster presence, visual identity, community growth, and journalist outreach.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#3A3A30;border-top:1px solid #2A2820;padding-top:10px;">Background · To be added</div>
+    </div>
+    <div style="background:var(--accent-bg);padding:20px 22px;">
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--paper);margin-bottom:4px;">Calib</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#9E9A7B;margin-bottom:12px;">Media · Editorial · Documentary</div>
+      <div style="font-size:11.5px;color:#8A8780;font-weight:300;line-height:1.6;margin-bottom:10px;">Editorial workflow, content production, and documentary development for Q3 distribution.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#3A3A30;border-top:1px solid #2A2820;padding-top:10px;">Background · To be added</div>
+    </div>
+  </div>
+
+  <!-- TEAM LEGEND FOR TIMELINE -->
+  <div class="section-label">13 Weeks · Four Teams · One Deadline</div>
+  <div class="team-legend" style="margin-bottom:28px;">
     <div class="legend-item"><div class="legend-dot" style="background:#7B9E8A;"></div>Build, Tokenomics & BD</div>
     <div class="legend-item"><div class="legend-dot" style="background:#9E8A7B;"></div>Competition</div>
     <div class="legend-item"><div class="legend-dot" style="background:#8A7B9E;"></div>Social, Branding & Community</div>
     <div class="legend-item"><div class="legend-dot" style="background:#9E9A7B;"></div>Media Team</div>
   </div>
 
-  <div class="section-label">Weekly Milestones — Fridays</div>
+  <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;text-align:right;">Reading from completion → to origin &nbsp;·&nbsp; May 31 at top &nbsp;·&nbsp; March 6 at bottom</div>
 
-  <!-- ═══════════════ PHASE 1: FOUNDING ═══════════════ -->
-  <div class="phase-divider"><div class="phase-divider-spacer"></div><div class="phase-label">Phase 1 — Founding & Alignment</div></div>
+  <div class="timeline">
 
-  <!-- WEEK 1 — Mar 6 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 1</div>
-      <div class="week-date-label">Mar 6</div>
+    <div class="milestone-row">
+      <div class="milestone-dot"></div>
+      <div class="milestone-bar"><span class="m-date">May 31</span><span class="m-text">Competition live · Bounties funded · Journalists submitting · Protocol proven · Q2 begins</span></div>
     </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Confirm Jay as dev lead</li><li>Confirm Drew on BD and tokenomics</li><li>Audit blank.space setup requirements</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Confirm Luciano as Competition lead</li><li>Confirm January, Brad, Marissa, Aziz on team</li><li>Begin brainstorming first competition topic</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Confirm Natalie as Social lead</li><li>Confirm Gift, Ohnaji, and Ken on team</li><li>Register IYK.YK Farcaster handle</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Calib confirmed — begin mapping editorial workflow</li><li>Define what IYK.YK journalism looks like</li></ul></div>
+    <div class="phase-divider"><div></div><div class="phase-label">Phase 4 — Scale &amp; Prove</div></div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 13</div><div class="week-date-label">May 29</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>All systems were confirmed stable</li><li>Vault and auction performance were documented</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Q2 plan was handed to the team</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Winners were notified</li><li>NFT membership was minted for winners</li></ul></div><div class="conv-section"><div class="conv-tag conv-related" style="margin-bottom:5px;">Being Related</div><ul class="wt-tasks"><li>The first cohort of IYK.YK journalists was welcomed into the community</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Q2 competition structure was proposed</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Winners were announced publicly</li><li>Q1 recap was published across all channels</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Q2 awareness strategy was drafted from Q1 learnings</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Final Q1 content was published</li><li>Documentary capture was completed for Q3 edit</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Q3 documentary release plan was outlined</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 12</div><div class="week-date-label">May 22</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Full protocol audit was completed</li><li>NFT minting for winners was prepared</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Q2 build priorities were locked</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Final submissions were evaluated</li><li>Winners were selected</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Prize delivery process was confirmed</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Competition close was announced publicly</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Q1 retrospective content was drafted</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Q2 social strategy was sketched from what worked in Q1</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Final editorial decisions were made</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>All Q1 output was catalogued and archived</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 11</div><div class="week-date-label">May 15</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>All smart contract issues were resolved</li><li>Q2 tokenomics roadmap was drafted</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Protocol was stable — no outstanding tech debt remained</li></ul></div><div class="conv-section"><div class="conv-tag conv-breakdown" style="margin-bottom:5px;">Breakdown</div><ul class="wt-tasks"><li>Any remaining technical debt was declared, owned, and resolved</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Winner selection criteria were confirmed</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Submission window entered its final stretch</li><li>Judging panel was active on the shortlist</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Final push into journalist communities was executed</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Submissions were highlighted publicly to drive last entries</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>All submissions were received and processed</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Q1 content catalogue was completed</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 10</div><div class="week-date-label">May 8</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Token frameworks were ready for community review</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Technical documentation was completed</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Final journalist outreach push was executed</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Shortlist of top submissions was identified</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Judging panel was briefed</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Countdown to May 31 campaign was launched</li></ul></div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Final window for last-wave journalist conversions was activated</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Documentary clips were shared on Farcaster</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Documentary rough cut was in progress</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Published archive was growing publicly and demonstrating the protocol's output</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 9</div><div class="week-date-label">May 1</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Token framework was shared for community input</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Vault yield tracking was made visible publicly</li><li>Investor deck was updated with live data</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Judging criteria were applied to all entries</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>20+ submissions were received</li><li>Top submissions were identified</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Press outreach about the protocol was begun</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Farcaster growth milestone was reported publicly</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>First accepted pieces were published</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Archive was organized by competition prompt</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="milestone-row">
+      <div class="milestone-dot"></div>
+      <div class="milestone-bar"><span class="m-date">Apr 24</span><span class="m-text">Competition live · Submissions flowing into Nouns Builder · Journalists actively onboarded · Pipeline confirmed</span></div>
+    </div>
+    <div class="phase-divider"><div></div><div class="phase-label">Phase 3 — Competition Launch</div></div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 8</div><div class="week-date-label">Apr 24</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>ERC-20 framework was finalized</li><li>Soulbound token design was drafted</li></ul></div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Investor pipeline was updated with competition progress data</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Second wave journalist outreach was activated</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Submission quality review was underway</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Mid-competition check on bounty sufficiency was completed</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Mid-competition momentum push identified second-wave journalist targets</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>One early submitter was featured publicly</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Documentary capture framed competition as proof-of-concept for a new journalism model</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Documentary capture of the competition process began</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Best submissions were flagged for publication</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 7</div><div class="week-date-label">Apr 17</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Live issues were monitored and resolved</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Vault yield stats were published publicly</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>10+ journalists were actively engaged</li><li>First submissions were flowing into Nouns Builder</li></ul></div><div class="conv-section"><div class="conv-tag conv-breakdown" style="margin-bottom:5px;">Breakdown</div><ul class="wt-tasks"><li>Onboarding friction points were declared, identified, and fixed</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Early submissions were amplified on Farcaster</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Weekly growth numbers were reported to the full team</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Editorial workflow was stress-tested at real volume</li></ul></div><div class="conv-section"><div class="conv-tag conv-breakdown" style="margin-bottom:5px;">Breakdown</div><ul class="wt-tasks"><li>Any bottlenecks were declared, flagged, and resolved</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 6</div><div class="week-date-label">Apr 10</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Full user journey was tested end to end</li></ul></div><div class="conv-section"><div class="conv-tag conv-breakdown" style="margin-bottom:5px;">Breakdown</div><ul class="wt-tasks"><li>Launch bugs were declared, identified, and resolved same day</li></ul></div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>First investor meeting was held</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Competition was publicly launched — the protocol entered the world</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Direct outreach was sent to the first 20 journalists</li></ul></div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>First onboarding calls were scheduled</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Launch announcement went out across all channels</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Journalist community posts went live</li><li>Farcaster engagement campaign was activated</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>First submissions were received and logged</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Turnaround time on reviews was confirmed</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="milestone-row">
+      <div class="milestone-dot"></div>
+      <div class="milestone-bar"><span class="m-date">Apr 3</span><span class="m-text">blank.space live · Vault active · Bounty funded onchain · Competition page built · System ready to launch</span></div>
+    </div>
+    <div class="phase-divider"><div></div><div class="phase-label">Phase 2 — Infrastructure Build</div></div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 5</div><div class="week-date-label">Apr 3</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>blank.space went live on mainnet</li><li>Octant vault was activated and seeded</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Nouns auction began running continuously</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Competition page went live on blank.space</li><li>Bounty was funded and confirmed onchain</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Submission pipeline was connected to Nouns Builder</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Pre-launch announcement content was ready and sequenced</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Direct journalist outreach began</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Submission intake was fully operational</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Review process was confirmed with the team</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 4</div><div class="week-date-label">Mar 27</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Nouns auction was tested end to end</li><li>ERC-20 framework design was begun</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Octant vault setup was initiated</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Competition rules were locked</li><li>Judging panel was identified</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Submission pipeline was mapped to Nouns Builder</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Journalist community outreach list was built</li><li>Audience growth target was confirmed</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>SEO groundwork was completed</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>A sample IYK.YK piece was published on Farcaster</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>The submission intake process was documented</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 3</div><div class="week-date-label">Mar 20</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Octant vault architecture was confirmed — funding model locked</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>blank.space was deployed to staging</li><li>Nouns auction configuration was underway</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Bounty size and funding source were confirmed</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Submission requirements were drafted</li><li>Competition page copy was written</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Visual identity v1 was approved — the brand had a face</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Content calendar for April was built</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>The SEO audit was started</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>The first piece of IYK.YK content was drafted — demonstrating the editorial voice</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Editorial workflow was tested internally</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="milestone-row">
+      <div class="milestone-dot"></div>
+      <div class="milestone-bar"><span class="m-date">Mar 13</span><span class="m-text">All leads confirmed · Prompt selected · Farcaster live · Every team had a charter · Judge onboarding planned</span></div>
+    </div>
+    <div class="phase-divider"><div></div><div class="phase-label">Phase 1 — Founding &amp; Alignment</div></div>
+<div class="week" >
+      <div class="week-date" ><div class="week-num">Wk 2</div><div class="week-date-label">Mar 13</div></div>
+      <div class="week-content" >
+        
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>blank.space configuration was completed</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Token framework outline was drafted</li><li>Additional dev resource needs were identified</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>A plan to onboard the first judge community as token holders was drafted</li></ul></div><div class="conv-section"><div class="conv-tag conv-opportunity" style="margin-bottom:5px;">Opportunity</div><ul class="wt-tasks"><li>Bounty size was proposed</li><li>Judging criteria v1 was drafted</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>The first competition prompt was selected</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>Brand voice document was drafted — the institution found its tone</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>The first three Farcaster posts went live</li><li>Visual identity brief was distributed to the design lead</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>Editorial workflow v1 was documented</li></ul></div><div class="conv-section"><div class="conv-tag conv-completion" style="margin-bottom:5px;">Completion</div><ul class="wt-tasks"><li>Content standards were defined</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+<div class="week" style="border:1px solid var(--gold);padding:2px;">
+      <div class="week-date" style="background:#0A0A08;"><div class="week-num">Wk 1</div><div class="week-date-label">Mar 6</div></div>
+      <div class="week-content" style="background:#0A0A08;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;padding:5px 10px;border:1px solid var(--gold);display:inline-block;">↓ This Week · Where We Are Now · The Origin Point</div>
+        <div class="week-teams">
+          <div class="week-team"><div class="wt-name build">Build</div><div class="conv-section"><div class="conv-tag conv-related" style="margin-bottom:5px;">Being Related</div><ul class="wt-tasks"><li>The founding team assembled for the first time</li><li>Founding commitments were made to one another</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>blank.space demo was made operational — the institution became visible</li><li>IYK.YK was deployed on testnet</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>The founding slide deck was delivered</li><li>Farcaster channels were reserved</li><li>Domain was registered via GitHub Pages</li></ul></div></div><div class="week-team"><div class="wt-name competition">Competition</div><div class="conv-section"><div class="conv-tag conv-related" style="margin-bottom:5px;">Being Related</div><ul class="wt-tasks"><li>The Competition team lead was confirmed</li><li>The Competition team was assembled</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>The first competition topic was opened for exploration</li></ul></div></div><div class="week-team"><div class="wt-name social">Social, Brand & Community</div><div class="conv-section"><div class="conv-tag conv-related" style="margin-bottom:5px;">Being Related</div><ul class="wt-tasks"><li>The Social team lead was confirmed</li><li>The Social team was assembled</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>The IYK.YK Farcaster handle was registered — the institution had a public address</li></ul></div></div><div class="week-team"><div class="wt-name media">Media</div><div class="conv-section"><div class="conv-tag conv-related" style="margin-bottom:5px;">Being Related</div><ul class="wt-tasks"><li>Calib was confirmed as Media lead — editorial workflow mapping began</li></ul></div><div class="conv-section"><div class="conv-tag conv-possibility" style="margin-bottom:5px;">Possibility</div><ul class="wt-tasks"><li>The team declared what IYK.YK journalism looks like</li></ul></div><div class="conv-section"><div class="conv-tag conv-action" style="margin-bottom:5px;">Action</div><ul class="wt-tasks"><li>First editorial workflow documentation was begun</li></ul></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- END TIMELINE -->
+
+  <!-- WHAT SUCCESS LOOKS LIKE -->
+  <div class="section-label">What Success Looks Like — By December 31, 2026</div>
+  <div style="margin-bottom:20px;">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.3;margin-bottom:6px;">One year from now, this is provably true.</div>
+    <div style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.6;">Every outcome below is measurable onchain, on screen, or in print.</div>
+  </div>
+  <div class="outcomes-grid reveal" style="margin-bottom:56px;">
+    <div class="outcome-cell">
+      <div class="outcome-tag">Community · By May 31, 2026</div>
+      <div class="outcome-headline">blank.space is live.<br>The first competition is open.</div>
+      <div class="outcome-body">Writing competition is published, bounties are funded, and the first submissions are flowing into Nouns Builder. Governance NFT auctions are running continuously.</div>
+    </div>
+    <div class="outcome-cell">
+      <div class="outcome-tag">Contributors · By August 31, 2026</div>
+      <div class="outcome-headline">Journalists are earning.<br>Tokenomics are community-designed.</div>
+      <div class="outcome-body">A measurable cohort of journalists has submitted to IYK.YK competitions and earned ERC-20 rewards. The community has participated in defining the token structure.</div>
+    </div>
+    <div class="outcome-cell">
+      <div class="outcome-tag">Publication · By September 30, 2026</div>
+      <div class="outcome-headline">The documentary is distributed.<br>Print is published.</div>
+      <div class="outcome-body">The film and published works are live across video and print channels. IYK.YK has demonstrated it can produce and distribute journalism at scale.</div>
+    </div>
+    <div class="outcome-cell highlighted">
+      <div class="outcome-tag">Institution · By December 31, 2026</div>
+      <div class="outcome-headline">The protocol is self-sustaining.<br>The DAO governs itself.</div>
+      <div class="outcome-body">The Octant vault is generating yield that funds operations without external dependency. NFT governance is actively decentralized. IYK.YK exists as a functioning proof of concept for community-governed journalism.</div>
+    </div>
+  </div>
+
+  <!-- QUARTERLY ROADMAP -->
+  <div class="section-label">Tentative Quarterly Roadmap — 2026</div>
+  <div style="margin-bottom:16px;">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.3;margin-bottom:6px;">Each quarter is built on what the previous one proved.</div>
+    <div style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.6;">These goals are tentative. They will be revised at the end of each quarter based on what actually happened. Getting ahead may accelerate them. Encountering problems may shift them. This is the direction, not the contract.</div>
+  </div>
+
+  <!-- TENTATIVE BADGE STYLE NOTE -->
+  <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border:1px dashed var(--muted);border-radius:50%;flex-shrink:0;"></div>Dashed border = tentative · Subject to revision at end of each quarter</div>
+
+  <!-- Q2: JUNE – AUGUST -->
+  <div style="border:1px dashed #3A3A30;padding:28px 32px;margin-bottom:2px;background:#0A0A08;">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;margin-bottom:20px;">
+      <div style="background:#1A1A14;border:1px dashed #3A3A30;padding:8px 16px;white-space:nowrap;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">Q2 · Tentative</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--paper);margin-top:2px;">June – August 2026</div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.25;margin-bottom:4px;">The protocol earns its second round of journalists. The community starts governing.</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300;">Contingent on Q1 competition results and community engagement.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1A1A14;border:1px solid #1A1A14;">
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#7B9E8A;margin-bottom:10px;">Build</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>ERC-20 contributor token launched and distributed to Q1 winners</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Soulbound reputation tokens minted for all Q1 participants</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Vault yield publicly trackable and reported monthly</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>First external patron staking integrations complete</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E8A7B;margin-bottom:10px;">Competition</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Second journalism competition launched with community-designed prompt</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Q1 winners become judging contributors for Q2</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Measurable cohort of 20+ contributing journalists onboarded cumulatively</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#8A7B9E;margin-bottom:10px;">Social</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Farcaster channel reaches meaningful audience milestone</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Press coverage of IYK.YK in at least one journalism-adjacent publication</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Community participates in first governance vote on tokenomics</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E9A7B;margin-bottom:10px;">Media</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Q1 competition winning pieces published in full</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Documentary fine cut completed</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Archive is organized, searchable, and publicly accessible</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- WEEK 2 — Mar 13 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 2</div>
-      <div class="week-date-label">Mar 13</div>
+  <!-- Q3: SEPTEMBER – NOVEMBER -->
+  <div style="border:1px dashed #3A3A30;border-top:none;padding:28px 32px;margin-bottom:2px;background:#0A0A08;">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;margin-bottom:20px;">
+      <div style="background:#1A1A14;border:1px dashed #3A3A30;padding:8px 16px;white-space:nowrap;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">Q3 · Tentative</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--paper);margin-top:2px;">September – November 2026</div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.25;margin-bottom:4px;">The documentary ships. The institution publishes at scale. The DAO starts deciding things.</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300;">Contingent on Q2 tokenomics stability and vault yield performance.</div>
+      </div>
     </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Begin blank.space configuration with Jay</li><li>Draft token framework outline with SwarthHatter</li><li>Identify any additional dev resources needed</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>First competition prompt selected</li><li>Judging criteria v1 drafted</li><li>Bounty size proposed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>First 3 Farcaster posts live</li><li>Visual identity brief to Ohnaji</li><li>Brand voice document drafted</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Editorial workflow v1 documented</li><li>Content standards defined</li></ul></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1A1A14;border:1px solid #1A1A14;">
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#7B9E8A;margin-bottom:10px;">Build</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>DAO governance actively used for at least one funding decision</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Knowledge graph / Bonfires integration live and populated</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Third-party patron staking generating meaningful yield contribution</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E8A7B;margin-bottom:10px;">Competition</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Third competition running with fully community-governed prompt selection</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Journalist cohort is self-referring — new contributors finding IYK.YK organically</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#8A7B9E;margin-bottom:10px;">Social</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Documentary distributed across video channels with coordinated launch</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>IYK.YK recognized in press as a credible alternative journalism model</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E9A7B;margin-bottom:10px;">Media</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Documentary is live and publicly distributed</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Print publication exists — at least one physical or digital edition</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Editorial workflow handles multiple concurrent competitions without bottleneck</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- MILESTONE -->
-  <div class="milestone-row">
-    <div class="milestone-dot-spacer"></div>
-    <div class="milestone-bar">
-      <span class="m-date">Mar 13</span>
-      <span class="m-text">All leads confirmed · Competition prompt selected · Farcaster live · Every team has a charter</span>
+  <!-- Q4: DECEMBER -->
+  <div style="border:1px dashed #3A3A30;border-top:none;padding:28px 32px;margin-bottom:48px;background:#0A0A08;">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;margin-bottom:20px;">
+      <div style="background:#1A1A14;border:1px dashed #3A3A30;padding:8px 16px;white-space:nowrap;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">Q4 · Tentative</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--paper);margin-top:2px;">December 2026</div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);line-height:1.25;margin-bottom:4px;">The proof of concept is complete. The institution runs without its founders.</div>
+        <div style="font-size:12px;color:var(--muted);font-weight:300;">Contingent on vault yield sufficiency and community governance maturity. This quarter's goal is demonstrating that IYK.YK does not need us to keep going.</div>
+      </div>
     </div>
-  </div>
-
-  <!-- ═══════════════ PHASE 2: BUILD ═══════════════ -->
-  <div class="phase-divider"><div class="phase-divider-spacer"></div><div class="phase-label">Phase 2 — Infrastructure Build</div></div>
-
-  <!-- WEEK 3 — Mar 20 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 3</div>
-      <div class="week-date-label">Mar 20</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>blank.space instance deployed to staging</li><li>Nouns auction configuration underway</li><li>Octant vault research complete</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Bounty size and funding source confirmed</li><li>Submission requirements drafted</li><li>Competition page copy written</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Visual identity v1 approved</li><li>Content calendar for April built</li><li>Ken SEO audit started</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Editorial workflow tested internally</li><li>First piece of IYK.YK content drafted</li></ul></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1A1A14;border:1px solid #1A1A14;">
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#7B9E8A;margin-bottom:10px;">Build</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Octant vault yield covers operations without new outside capital</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Protocol is audited, stable, and requires no single technical maintainer</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>2027 roadmap proposed by the community, not the founding team</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E8A7B;margin-bottom:10px;">Competition</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Fourth competition runs entirely under community governance</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Journalist contributors are proposing their own bounties</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Founding team's role in competition design is minimal or advisory</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#8A7B9E;margin-bottom:10px;">Social</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Year-end public report published — what was built, what was proven, what was learned</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>IYK.YK is referenced as a model by at least one other journalism or DAO project</li>
+        </ul>
+      </div>
+      <div style="background:var(--card-bg);padding:16px 18px;">
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#9E9A7B;margin-bottom:10px;">Media</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Four full competitions of journalism are archived and publicly accessible</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Documentary has been viewed and cited as credible primary source</li>
+          <li style="font-size:11px;color:#8A8780;line-height:1.5;padding-left:10px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:#444;">–</span>Editorial team proposes 2027 content strategy independently</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- WEEK 4 — Mar 27 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 4</div>
-      <div class="week-date-label">Mar 27</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Nouns auction tested end to end</li><li>Octant vault setup initiated</li><li>ERC-20 framework design begun</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Competition rules locked</li><li>Submission pipeline mapped to Nouns Builder</li><li>Judging panel identified</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Audience growth target confirmed</li><li>Journalist community outreach list built</li><li>SEO groundwork complete</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Sample IYK.YK piece published on Farcaster</li><li>Submission intake process documented</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 5 — Apr 3 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 5</div>
-      <div class="week-date-label">Apr 3</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>blank.space live on mainnet</li><li>Octant vault active and seeded</li><li>Nouns auction running continuously</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Competition page live on blank.space</li><li>Bounty funded and confirmed onchain</li><li>Submission pipeline connected to Nouns Builder</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Pre-launch announcement content ready</li><li>Direct journalist outreach begins</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Submission intake fully operational</li><li>Review process confirmed with team</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MILESTONE -->
-  <div class="milestone-row">
-    <div class="milestone-dot-spacer"></div>
-    <div class="milestone-bar">
-      <span class="m-date">Apr 3</span>
-      <span class="m-text">blank.space live · Vault active · Bounty funded onchain · Competition page built · System ready to launch</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════ PHASE 3: LAUNCH ═══════════════ -->
-  <div class="phase-divider"><div class="phase-divider-spacer"></div><div class="phase-label">Phase 3 — Competition Launch</div></div>
-
-  <!-- WEEK 6 — Apr 10 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 6</div>
-      <div class="week-date-label">Apr 10</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Full user journey tested end to end</li><li>Any launch bugs resolved same day</li><li>First investor meeting with Drew</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Competition publicly launched</li><li>Direct outreach to first 20 journalists sent</li><li>First onboarding calls scheduled</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Launch announcement across all channels</li><li>Journalist community posts live</li><li>Farcaster engagement campaign active</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Receiving and logging first submissions</li><li>Turnaround time on reviews confirmed</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 7 — Apr 17 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 7</div>
-      <div class="week-date-label">Apr 17</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Live issues monitored and resolved</li><li>Vault yield stats published publicly</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>10+ journalists actively engaged</li><li>First submissions flowing into Nouns Builder</li><li>Onboarding friction points identified and fixed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Early submissions amplified on Farcaster</li><li>Weekly growth numbers reported to full team</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Editorial workflow stress-tested at real volume</li><li>Any bottlenecks flagged and resolved</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 8 — Apr 24 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 8</div>
-      <div class="week-date-label">Apr 24</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>ERC-20 framework finalized</li><li>Soulbound token design drafted</li><li>Investor pipeline updated</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Second wave journalist outreach active</li><li>Submission quality review underway</li><li>Mid-competition check on bounty sufficiency</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Mid-competition momentum push</li><li>One early submitter featured publicly</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Documentary capture of competition process begun</li><li>Best submissions flagged for publication</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MILESTONE -->
-  <div class="milestone-row">
-    <div class="milestone-dot-spacer"></div>
-    <div class="milestone-bar">
-      <span class="m-date">Apr 24</span>
-      <span class="m-text">Competition live · Submissions flowing into Nouns Builder · Journalists actively onboarded · Pipeline confirmed</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════ PHASE 4: SCALE ═══════════════ -->
-  <div class="phase-divider"><div class="phase-divider-spacer"></div><div class="phase-label">Phase 4 — Scale & Prove</div></div>
-
-  <!-- WEEK 9 — May 1 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 9</div>
-      <div class="week-date-label">May 1</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Vault yield tracking visible publicly</li><li>Investor deck updated with live data</li><li>Token framework shared for community input</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>20+ submissions received</li><li>Judging criteria applied to all entries</li><li>Top submissions identified</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Farcaster growth milestone reported</li><li>Press outreach about the protocol begun</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>First accepted pieces published</li><li>Archive organized by competition prompt</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 10 — May 8 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 10</div>
-      <div class="week-date-label">May 8</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Token frameworks ready for community review</li><li>Technical documentation complete</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Final journalist outreach push</li><li>Shortlist of top submissions identified</li><li>Judging panel briefed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Countdown to May 31 campaign begins</li><li>Documentary clips shared on Farcaster</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Documentary rough cut in progress</li><li>Published archive growing publicly</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 11 — May 15 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 11</div>
-      <div class="week-date-label">May 15</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>All smart contract issues resolved</li><li>Q2 tokenomics roadmap drafted</li><li>Protocol stable — no outstanding tech debt</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Submission window in final stretch</li><li>Judging panel active on shortlist</li><li>Winner selection criteria confirmed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Final push into journalist communities</li><li>Submissions highlighted publicly to drive last entries</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>All submissions received and processed</li><li>Q1 content catalogue complete</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 12 — May 22 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 12</div>
-      <div class="week-date-label">May 22</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>Full protocol audit complete</li><li>Q2 build priorities locked</li><li>NFT minting for winners prepared</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Final submissions evaluated</li><li>Winners selected</li><li>Prize delivery process confirmed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Competition close announced</li><li>Q1 retrospective content drafted</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Final editorial decisions made</li><li>All Q1 output catalogued and archived</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 13 — May 29 -->
-  <div class="week">
-    <div class="week-date">
-      <div class="week-num">Wk 13</div>
-      <div class="week-date-label">May 29</div>
-    </div>
-    <div class="week-content">
-      <div class="week-teams">
-        <div class="week-team"><div class="wt-name build">Build</div><ul class="wt-tasks"><li>All systems confirmed stable</li><li>Q2 plan handed to team</li><li>Vault and auction performance documented</li></ul></div>
-        <div class="week-team"><div class="wt-name competition">Competition</div><ul class="wt-tasks"><li>Winners notified</li><li>NFT membership minted for winners</li><li>Q2 competition structure proposed</li></ul></div>
-        <div class="week-team"><div class="wt-name social">Social</div><ul class="wt-tasks"><li>Winners announced publicly</li><li>Q1 recap published across all channels</li></ul></div>
-        <div class="week-team"><div class="wt-name media">Media</div><ul class="wt-tasks"><li>Final Q1 content published</li><li>Documentary capture complete for Q3 edit</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FINAL MILESTONE -->
-  <div class="milestone-row">
-    <div class="milestone-dot-spacer"></div>
-    <div class="milestone-bar">
-      <span class="m-date">May 31</span>
-      <span class="m-text">Competition live · Bounties funded · Journalists submitting · Protocol proven · Q2 begins</span>
+  <span id="glossary"></span>
+  <!-- GLOSSARY -->
+  <div style="border-top:1px solid #2A2820;padding-top:40px;">
+    <div class="section-label" style="margin-bottom:20px;">Glossary — For Those New to This Territory</div>
+    <div class="glossary-grid reveal">
+      <div class="gloss-cell" style="border-top:none;"><div class="gloss-term">DAO</div><div class="gloss-def">Decentralized Autonomous Organization. A community that governs itself through transparent rules written into code, rather than through a CEO or board. Decisions are made collectively by members, and the rules cannot be changed by any single person.</div></div>
+      <div class="gloss-cell" style="border-top:none;"><div class="gloss-term">NFT (Membership Token)</div><div class="gloss-def">A Non-Fungible Token. In IYK.YK, NFTs are not digital art — they are membership credentials. Winning a competition earns you one. Holding one gives you a vote in how the institution is governed and how its funds are allocated.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">ERC-20 (Contributor Token)</div><div class="gloss-def">A type of digital token earned by contributing — writing, editing, producing. Think of it as the currency of the platform. It is how active contributors get paid for their work and earn a say in operational decisions.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">Soulbound Token (Reputation)</div><div class="gloss-def">A permanent, non-transferable record of your contributions — it cannot be bought, sold, or faked. It answers the question: do you deliver what you promise? Have you collaborated well? Your reputation here belongs to you and travels with you.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">Nouns / blank.space</div><div class="gloss-def">Nouns is a model for community governance where new membership tokens are auctioned continuously, funding a shared treasury. blank.space is a platform built on this model, designed specifically for community-governed organizations. It is where IYK.YK lives.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">Octant Vault</div><div class="gloss-def">A funding mechanism where community investment is pooled and staked to generate yield — similar to how an endowment works. IYK.YK deploys only the returns, never the principal. The founding investment is preserved permanently and governed by the community.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">Farcaster</div><div class="gloss-def">A decentralized social network — like Twitter, but no single company owns it. IYK.YK uses Farcaster as its public-facing channel, where journalists, contributors, and the community discover and engage with the platform.</div></div>
+      <div class="gloss-cell"><div class="gloss-term">Knowledge Graph / Bonfires</div><div class="gloss-def">A structured, interconnected archive of everything the institution produces and asks — stories, questions, sources, and context — organized so that relationships between ideas are visible and searchable. Bonfires is the tool IYK.YK uses to build and maintain this archive onchain.</div></div>
+      <div class="gloss-cell" style="grid-column:1/-1;"><div class="gloss-term">Bounty / Journalism Competition</div><div class="gloss-def">A funded prompt — a question or story the community wants answered. Anyone can submit journalism in response. The best submissions win membership and compensation. Bounties are how IYK.YK commissions journalism without a traditional editorial hierarchy deciding what gets covered.</div></div>
     </div>
   </div>
 
@@ -435,14 +1638,39 @@
   <div class="footer">
     <div>
       <div class="footer-main">IYK.YK — The Fourth Estate, Decentralized.</div>
-      <div class="footer-sub">Q1 Weekly Milestone Plan · March 3 – May 31, 2026</div>
+      <div class="footer-sub">Governance · Incentives · Knowledge · Community · March 3 – May 31, 2026</div>
     </div>
     <div class="footer-right">
-      13 Weeks · Four Teams · One Deadline<br>
+      Last edited February 26, 2026<br>
+      Built on Farcaster · blank.space · Octant<br>
       <span class="gold">IYK.YK</span>
     </div>
   </div>
 
 </div>
+<script>
+// Sticky nav border on scroll
+(function(){
+  var nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+})();
+
+// Scroll reveal
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ observer.observe(el); });
+})();
+</script>
 </body>
 </html>
